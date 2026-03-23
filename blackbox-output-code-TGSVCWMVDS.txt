@@ -1,0 +1,76 @@
+import { motion } from 'framer-motion'
+import { Link } from 'react-router-dom'
+
+export default function Hero() {
+  return (
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16">
+      {/* Animated background */}
+      <div className="absolute inset-0">
+        <div className="absolute inset-0 bg-gradient-to-br from-neon-green/5 via-neon-blue/5 to-neon-purple/5 animate-pulse" />
+        <div className="absolute top-20 left-10 w-72 h-72 bg-neon-green/20 rounded-full blur-3xl animate-pulse" />
+        <div className="absolute bottom-20 right-10 w-96 h-96 bg-neon-blue/20 rounded-full blur-3xl animate-pulse delay-1000" />
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-neon-purple/20 rounded-full blur-3xl animate-pulse delay-500" />
+      </div>
+
+      <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
+        <motion.h1 
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1 }}
+          className="text-6xl md:text-8xl font-neon leading-tight mb-8 glow-text"
+        >
+          VIBE
+          <br />
+          <span className="text-neon-green">CHECK</span>
+        </motion.h1>
+        
+        <motion.p 
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.3, duration: 0.8 }}
+          className="text-xl md:text-2xl text-gray-300 mb-12 font-cyber tracking-wide"
+        >
+          Cyberpunk streetwear for the digital generation
+        </motion.p>
+
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.6, duration: 0.8 }}
+          className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+        >
+          <Link
+            to="/shop"
+            className="group relative px-12 py-4 bg-gradient-to-r from-neon-green to-neon-blue text-cyber-black font-cyber text-xl rounded-full overflow-hidden hover:shadow-glow hover:shadow-neon-green/50 transition-all duration-300"
+          >
+            <span className="relative z-10">SHOP DROPS</span>
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
+          </Link>
+          
+          <Link
+            to="/quiz"
+            className="group px-12 py-4 border-2 border-neon-green/50 text-neon-green font-cyber text-xl rounded-full hover:bg-neon-green hover:text-cyber-black transition-all duration-300 glow-text"
+          >
+            FIND MY VIBE
+          </Link>
+        </motion.div>
+
+        {/* Scroll indicator */}
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 1, duration: 0.8 }}
+          className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
+        >
+          <div className="w-6 h-10 border-2 border-neon-green/50 rounded-full flex justify-center">
+            <motion.div 
+              className="w-1 h-3 bg-neon-green rounded-full mt-2"
+              animate={{ y: [0, 15, 0] }}
+              transition={{ repeat: Infinity, duration: 1.5 }}
+            />
+          </div>
+        </motion.div>
+      </div>
+    </section>
+  )
+}

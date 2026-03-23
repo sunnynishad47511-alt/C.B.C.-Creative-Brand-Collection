@@ -1,0 +1,16 @@
+# 1. Install Vercel CLI
+npm i -g vercel
+
+# 2. In your project root, run:
+vercel
+
+# 3. Follow prompts:
+# - Scope: your GitHub account
+# - Link to existing project? No
+# - Framework: Vite
+# - Root directory: ./ 
+# - Build command: npm run build
+# - Output directory: dist
+# - Install dependencies: Yes
+
+# 4. Your site is LIVE! 📱✨

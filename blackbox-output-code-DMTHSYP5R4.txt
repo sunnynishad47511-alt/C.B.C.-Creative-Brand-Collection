@@ -1,0 +1,13 @@
+vibe-check-cbc/
+├── public/
+│   ├── index.html
+│   └── favicon.ico
+├── src/
+│   ├── components/
+│   ├── pages/
+│   ├── data/
+│   ├── hooks/
+│   └── utils/
+├── tailwind.config.js
+├── package.json
+└── README.md

@@ -1,0 +1,31 @@
+import { useState, useRef, useCallback } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
+import { X, Plus, Trash2 } from 'lucide-react'
+
+const clothingItems = [
+  { id: 1, name: 'Cyber Hoodie', src: 'https://images.unsplash.com/photo-1551028719-00167b16eac5?w=400', category: 'top' },
+  { id: 2, name: 'Tech Pants', src: 'https://images.unsplash.com/photo-1542272604-787c3835535d?w=400', category: 'bottom' },
+  { id: 3, name: 'Neon Sneakers', src: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400', category: 'shoes' },
+  { id: 4, name: 'Holo Jacket', src: 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=400', category: 'outerwear' },
+]
+
+export default function VirtualCloset() {
+  const [avatarClothes, setAvatarClothes] = useState([])
+  const [draggedItem, setDraggedItem] = useState(null)
+  const avatarRef = useRef(null)
+
+  const handleDragStart = useCallback((item) => {
+    setDraggedItem(item)
+  }, [])
+
+  const handleDragOver = (e) => {
+    e.preventDefault()
+  }
+
+  const handleDrop = useCallback((e) => {
+    e.preventDefault()
+    if (draggedItem) {
+      setAvatarClothes(prev => {
+        const exists = prev.find(c => c.id === draggedItem.id)
+        if (!exists) {
+          return [...prev, { ...draggedItem, x: e.nativeEvent
