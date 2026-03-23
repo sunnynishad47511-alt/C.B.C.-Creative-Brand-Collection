@@ -1,0 +1,92 @@
+import { useState } from 'react'
+import { Link, useLocation } from 'react-router-dom'
+import { motion } from 'framer-motion'
+import { Menu, X, ShoppingCart } from 'lucide-react'
+
+export default function Navbar() {
+  const [mobileOpen, setMobileOpen] = useState(false)
+  const location = useLocation()
+
+  const navItems = [
+    { name: 'Home', path: '/' },
+    { name: 'Shop', path: '/shop' },
+    { name: 'Style Quiz', path: '/quiz' },
+    { name: 'Virtual Closet', path: '/virtual-closet' }
+  ]
+
+  return (
+    <motion.nav 
+      initial={{ y: -100 }}
+      animate={{ y: 0 }}
+      className="fixed top-0 w-full z-50 bg-cyber-black/95 backdrop-blur-md border-b border-neon-green/30 px-4 py-4"
+    >
+      <div className="max-w-6xl mx-auto flex items-center justify-between">
+        {/* Logo */}
+        <Link to="/" className="flex items-center gap-3 group">
+          <div className="w-12 h-12 bg-gradient-to-br from-neon-green to-neon-blue rounded-2xl flex items-center justify-center shadow-glow">
+            <span className="text-xl font-bold text-cyber-black font-cyber">VC</span>
+          </div>
+          <div>
+            <h1 className="text-2xl font-neon text-neon-green glow">VibeCheck</h1>
+            <p className="text-xs text-neon-blue font-cyber">C.B.C. Collection</p>
+          </div>
+        </Link>
+
+        {/* Desktop Nav */}
+        <div className="hidden md:flex items-center gap-8">
+          {navItems.map(item => (
+            <Link
+              key={item.path}
+              to={item.path}
+              className={`font-cyber text-lg relative group ${
+                location.pathname === item.path 
+                  ? 'text-neon-green glow' 
+                  : 'text-gray-300 hover:text-neon-blue'
+              }`}
+            >
+              {item.name}
+              <span className={`absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-neon-green to-neon-blue scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300 ${
+                location.pathname === item.path ? 'scale-x-100' : ''
+              }`} />
+            </Link>
+          ))}
+        </div>
+
+        {/* Cart & Mobile Menu */}
+        <div className="flex items-center gap-4">
+          <Link to="/checkout" className="relative p-2">
+            <ShoppingCart className="w-6 h-6 text-gray-300 hover:text-neon-green" />
+            <span className="absolute -top-1 -right-1 w-6 h-6 bg-neon-green text-black text-xs rounded-full flex items-center justify-center font-bold">3</span>
+          </Link>
+          
+          <button 
+            onClick={() => setMobileOpen(!mobileOpen)}
+            className="md:hidden p-2"
+          >
+            {mobileOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          </button>
+        </div>
+      </div>
+
+      {/* Mobile Menu */}
+      {mobileOpen && (
+        <motion.div 
+          initial={{ opacity: 0, height: 0 }}
+          animate={{ opacity: 1, height: 'auto' }}
+          className="md:hidden mt-4 pt-4 border-t border-neon-green/30"
+        >
+          {navItems.map(item => (
+            <Link
+              key={item.path}
+              to={item.path}
+              onClick={() => setMobileOpen(false)}
+              className="block py-3 px-4 font-cyber text-lg border-l-4 border-transparent hover:border-neon-green hover:text-neon-green transition-all"
+            >
+              {item.name}
+            </Link>
+          ))}
+        </motion.div>
+      )}
+    </motion.nav>
+  )
+}

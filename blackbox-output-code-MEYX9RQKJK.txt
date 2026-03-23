@@ -1,0 +1,18 @@
+/** @type {import('tailwindcss').Config} */
+export default {
+  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
+  theme: {
+    extend: {
+      fontFamily: {
+        cyber: ['"Orbitron"', 'monospace'],
+        neon: ['"Audiowide"', 'monospace']
+      },
+      colors: {
+        'cyber-black': '#0a0a0a',
+        'cyber-dark': '#1a1a1a',
+        'neon-green': '#00ff88',
+        'neon-blue': '#00d4ff'
+      }
+    }
+  }
+}

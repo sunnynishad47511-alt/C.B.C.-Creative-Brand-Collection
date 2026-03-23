@@ -1,0 +1,10 @@
+import { Link } from 'react-router-dom'
+import { motion } from 'framer-motion'
+
+const products = [
+  { id: 1, name: 'Cyber Hoodie', price: '$89', img: 'https://images.unsplash.com/photo-1551028719-00167b16eac5?w=400&fit=crop' },
+  { id: 2, name: 'Tech Pants', price: '$129', img: 'https://images.unsplash.com/photo-1542272604-787c3835535d?w=400&fit=crop' },
+  { id: 3, name: 'Neon Jacket', price: '$199', img: 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=400&fit=crop' },
+  { id: 4, name: 'Holo Sneakers', price: '$159', img: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400&fit=crop' },
+  { id: 5, name: 'Pixel Tee', price: '$49', img: 'https://images.unsplash.com/photo-1529139578434-4a3dd6800a47?w=400&fit=crop' },
+  { id: 6, name: 'Chrome Cap', price
