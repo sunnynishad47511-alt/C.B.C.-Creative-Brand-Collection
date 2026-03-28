@@ -1,7 +1,7 @@
 import { Routes, Route, useLocation } from 'react-router-dom'
 import { AnimatePresence } from 'framer-motion'
 import { Toaster } from './components/ui/Toaster.jsx'
-import { CartProvider } from './hooks/useCart.jsx'
+import { CartProvider } from './hooks/useCart.js'
 import Navbar from './components/Navbar.jsx'
 import Footer from './components/Footer.jsx'
 
